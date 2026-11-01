@@ -1,0 +1,20 @@
+# Data processing
+pandas>=2.2.3
+openpyxl>=3.1      # XLSX, XLSM
+pyxlsb>=1.0.10     # XLSB (distributor_orders)
+
+# Database
+sqlalchemy>=2.0
+psycopg2-binary>=2.9.10
+
+# Google Drive
+gspread>=6.0
+google-auth>=2.30
+google-api-python-client>=2.130   # Drive API v3: list + download files
+
+# OneDrive (Microsoft Graph)
+msal>=1.28
+requests>=2.32
+
+# Config
+python-dotenv>=1.0

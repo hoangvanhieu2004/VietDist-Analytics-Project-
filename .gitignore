@@ -1,0 +1,17 @@
+# Secrets — KHÔNG commit
+.env
+credentials/
+
+# Python
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# Local data downloads
+data/
+
+# Office lock files
+~$*
+02_VietDist_Project_Description_v2.0_Đề bài.docx BRD_VietDist_Analytics_Project_v1.0.docx
+.docx
