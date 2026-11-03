@@ -12,4 +12,21 @@ __pycache__/
 data/
 
 # Office lock files
+~$*
 *.docx
+
+# Power BI project: cache và cài đặt cục bộ của Desktop
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
+# .pbix chứa toàn bộ dữ liệu đã import (tên, SĐT, địa chỉ KH...) — chỉ đưa bản .pbip lên git
+*.pbix
+
+# Tài liệu hướng dẫn / giải thích nội bộ (chỉ giữ trên máy)
+CLAUDE.md
+docs/giai_thich_code_python.md
+docs/dashboard_metrics.md
+
+03_power_bi/build_report.py
+03_power_bi/dashboard_spec.md
+
+*.json

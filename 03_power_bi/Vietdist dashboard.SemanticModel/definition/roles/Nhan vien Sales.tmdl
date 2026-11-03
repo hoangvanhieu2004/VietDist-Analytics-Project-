@@ -1,0 +1,14 @@
+/// Chỉ dữ liệu cá nhân (employee_id của user); không xem NPP
+role 'Nhan vien Sales'
+	modelPermission: read
+
+	tablePermission 'Dim Employee' =
+			VAR v = LOOKUPVALUE('Security User'[employee_id], 'Security User'[email], LOWER(USERPRINCIPALNAME()))
+			RETURN NOT ISBLANK(v) && 'Dim Employee'[employee_id] = v
+
+	tablePermission 'Dim Distributor' = FALSE()
+
+	tablePermission 'Security User' = 'Security User'[email] = LOWER(USERPRINCIPALNAME())
+
+	annotation PBI_Id = bf53f6ffc2af4fc082e160a97e47eced
+

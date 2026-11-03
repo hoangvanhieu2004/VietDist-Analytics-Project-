@@ -1,0 +1,16 @@
+/// Dữ liệu vùng của user (region của bản ghi current trong Dim Employee, khớp email = USERPRINCIPALNAME). Bán hàng lọc theo vùng tại thời điểm giao dịch (SCD2); NPP lọc theo vùng NPP
+role 'Giam doc Vung'
+	modelPermission: read
+
+	tablePermission 'Dim Employee' =
+			VAR v = LOOKUPVALUE('Security User'[region], 'Security User'[email], LOWER(USERPRINCIPALNAME()))
+			RETURN NOT ISBLANK(v) && 'Dim Employee'[region] = v
+
+	tablePermission 'Dim Distributor' =
+			VAR v = LOOKUPVALUE('Security User'[region], 'Security User'[email], LOWER(USERPRINCIPALNAME()))
+			RETURN NOT ISBLANK(v) && 'Dim Distributor'[region] = v
+
+	tablePermission 'Security User' = 'Security User'[email] = LOWER(USERPRINCIPALNAME())
+
+	annotation PBI_Id = 463d040d8c4e4db1819fdbfbffa2e186
+

@@ -1,0 +1,235 @@
+table 'Fact Sales'
+	lineageTag: 29c109a8-c7d9-420f-a59d-5ffabcaf68c2
+
+	column order_id
+		dataType: string
+		lineageTag: 2fdf0c88-c2a8-426d-b2a3-24ec4f48d520
+		summarizeBy: none
+		sourceColumn: order_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_id
+		dataType: string
+		isHidden
+		lineageTag: a627607d-b571-4b03-b929-f84979cbb4eb
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: ebcd265d-2d10-437a-a000-25cbbea8d48f
+		summarizeBy: none
+		sourceColumn: date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_date
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: 56788734-994d-4af9-86bf-0b7a9d55a371
+		summarizeBy: none
+		sourceColumn: order_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column customer_id
+		dataType: string
+		isHidden
+		lineageTag: 32562c19-2224-4af5-8fd4-0fcf07e92a8d
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column employee_id
+		dataType: string
+		isHidden
+		lineageTag: a7050f7b-a9d9-42f9-98d6-63961a03505b
+		summarizeBy: none
+		sourceColumn: employee_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column employee_sk
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: da00b60b-7ad1-49d2-926c-abebbcc74385
+		summarizeBy: none
+		sourceColumn: employee_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		isHidden
+		lineageTag: e781e7a5-b2bd-43e0-88e4-03ff2a7f4d4a
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column province
+		dataType: string
+		isHidden
+		lineageTag: 67117dd1-60ec-4b3d-af79-eb716834f28e
+		summarizeBy: none
+		sourceColumn: province
+
+		annotation SummarizationSetBy = Automatic
+
+	column channel
+		dataType: string
+		isHidden
+		lineageTag: ed3ea030-1747-4061-ba3c-3f20f877a14f
+		summarizeBy: none
+		sourceColumn: channel
+
+		annotation SummarizationSetBy = Automatic
+
+	column quantity
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b8d1fd03-ebe7-4015-930f-e7d4d04271e4
+		summarizeBy: sum
+		sourceColumn: quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column unit_price
+		dataType: double
+		isHidden
+		lineageTag: 118bae22-6a86-413c-898a-36977f1b347b
+		summarizeBy: none
+		sourceColumn: unit_price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column discount_pct
+		dataType: double
+		isHidden
+		lineageTag: 00b9bb2a-18c6-42d0-9263-3569ec53b352
+		summarizeBy: none
+		sourceColumn: discount_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column discount_amount
+		dataType: double
+		isHidden
+		lineageTag: 34d16318-339f-42de-bb92-235355c9ac20
+		summarizeBy: sum
+		sourceColumn: discount_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column gross_amount
+		dataType: double
+		isHidden
+		lineageTag: 2a0d5f0e-add3-429e-aed1-31cebc3ab509
+		summarizeBy: sum
+		sourceColumn: gross_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column net_amount
+		dataType: double
+		isHidden
+		lineageTag: 307167aa-4477-4311-8ed6-48b1264ab753
+		summarizeBy: sum
+		sourceColumn: net_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column net_revenue
+		dataType: double
+		isHidden
+		lineageTag: 7b51bc8d-2770-4bda-874a-ce5d4f9037d4
+		summarizeBy: sum
+		sourceColumn: net_revenue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column delivery_status
+		dataType: string
+		lineageTag: 4b3adf56-bf17-45c0-b4ad-fd11d32d021e
+		summarizeBy: none
+		sourceColumn: delivery_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column payment_method
+		dataType: string
+		lineageTag: 726ae295-57e4-4b54-901e-6eb9344d6ffd
+		summarizeBy: none
+		sourceColumn: payment_method
+
+		annotation SummarizationSetBy = Automatic
+
+	column payment_status
+		dataType: string
+		lineageTag: d6872ef9-20db-4852-88d0-8e2afa6441e4
+		summarizeBy: none
+		sourceColumn: payment_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_delivered
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 529807f8-ebc3-4891-894e-e17305542327
+		summarizeBy: none
+		sourceColumn: is_delivered
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_promo
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 208fbe68-0bee-4ddd-8618-74cea3bef16b
+		summarizeBy: none
+		sourceColumn: is_promo
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_before_customer_join
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 4226538d-cf1e-4ad5-beeb-28429f6f7053
+		summarizeBy: none
+		sourceColumn: is_before_customer_join
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'dwh fact_sales' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "vietdist_dw"),
+				    dwh_fact_sales = Source{[Schema="dwh",Item="fact_sales"]}[Data]
+				in
+				    dwh_fact_sales
+
+	annotation PBI_ResultType = Table
+

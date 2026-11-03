@@ -1,0 +1,169 @@
+table 'Dim Customer'
+	lineageTag: 6a353a99-02be-48fa-9091-60624bf8526b
+
+	column customer_id
+		dataType: string
+		lineageTag: be8af98f-b85f-484c-a2fb-e358945e770c
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_name
+		dataType: string
+		lineageTag: 3b9769f4-c852-499c-bd80-3bde571decb2
+		summarizeBy: none
+		sourceColumn: customer_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_type
+		dataType: string
+		lineageTag: fa7e227a-0b26-40bf-a55b-edc70ac97144
+		summarizeBy: none
+		sourceColumn: customer_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column channel
+		dataType: string
+		lineageTag: e22b177c-9e0a-4c07-bab8-e6b8fcb81b44
+		summarizeBy: none
+		sourceColumn: channel
+
+		annotation SummarizationSetBy = Automatic
+
+	column province
+		dataType: string
+		lineageTag: 9620bee1-c769-4c66-9167-b29d1ff97f67
+		summarizeBy: none
+		sourceColumn: province
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: 8ec58aa0-a518-4833-8636-e89c27f3812b
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column address
+		dataType: string
+		isHidden
+		lineageTag: 85532d28-9e5d-4371-9c58-d554754d39cd
+		summarizeBy: none
+		sourceColumn: address
+
+		annotation SummarizationSetBy = Automatic
+
+	column phone
+		dataType: string
+		isHidden
+		lineageTag: 5354483b-83bf-4ce7-987a-55f88c7f930c
+		summarizeBy: none
+		sourceColumn: phone
+
+		annotation SummarizationSetBy = Automatic
+
+	column tax_code
+		dataType: string
+		isHidden
+		lineageTag: 13c93e67-7042-49fd-b150-132466af54dc
+		summarizeBy: none
+		sourceColumn: tax_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column join_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 37992ebd-43dd-40af-aa81-b6e6f8972d27
+		summarizeBy: none
+		sourceColumn: join_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column credit_limit
+		dataType: double
+		formatString: #,0
+		lineageTag: 76f30216-5f9f-4e94-927a-6f8236abfd26
+		summarizeBy: none
+		sourceColumn: credit_limit
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column status
+		dataType: string
+		lineageTag: 0a5b3d77-d68d-4918-9c53-d0ef487e62e1
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column first_order_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 6cd2d460-1aa4-413a-862a-1a731cb47764
+		summarizeBy: none
+		sourceColumn: first_order_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column last_order_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: dcff985a-7e9e-4474-91dc-5912599551a9
+		summarizeBy: none
+		sourceColumn: last_order_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column net_revenue
+		dataType: double
+		isHidden
+		lineageTag: e558c4c9-4a6f-429b-adc3-6f3771cd163b
+		summarizeBy: none
+		sourceColumn: net_revenue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column loyalty_tier
+		dataType: string
+		lineageTag: 9ce318f0-b963-414f-ac42-d5e8ef6130d6
+		summarizeBy: none
+		sourceColumn: loyalty_tier
+
+		annotation SummarizationSetBy = Automatic
+
+	column _source_batch_id
+		dataType: string
+		isHidden
+		lineageTag: a2a9ec59-5fd6-4faa-8ec5-f7aae37c2b7d
+		summarizeBy: none
+		sourceColumn: _source_batch_id
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'dwh dim_customers' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "vietdist_dw"),
+				    dwh_dim_customers = Source{[Schema="dwh",Item="dim_customers"]}[Data]
+				in
+				    dwh_dim_customers
+
+	annotation PBI_ResultType = Table
+

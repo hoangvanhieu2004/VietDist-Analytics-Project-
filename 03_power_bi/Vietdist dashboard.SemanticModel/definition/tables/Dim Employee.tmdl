@@ -1,0 +1,197 @@
+table 'Dim Employee'
+	lineageTag: 6e501a6c-0a8f-484d-a9ee-3299e95597ab
+
+	column employee_sk
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: ce98a41c-bd91-423f-9a74-9f9250faaf31
+		summarizeBy: none
+		sourceColumn: employee_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column employee_id
+		dataType: string
+		lineageTag: e4e91635-9388-4efa-8314-4ad655176446
+		summarizeBy: none
+		sourceColumn: employee_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column full_name
+		dataType: string
+		lineageTag: e4efd861-c5da-477e-9935-2c11dddc77dd
+		summarizeBy: none
+		sourceColumn: full_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column gender
+		dataType: string
+		lineageTag: ab281693-0e29-4d19-ac58-ea488cdf2ac1
+		summarizeBy: none
+		sourceColumn: gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_of_birth
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 401a87c0-e848-4406-b444-b5081bfb05a8
+		summarizeBy: none
+		sourceColumn: date_of_birth
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column join_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 9bd4086a-0a62-4a52-8507-7d3a72f08cf1
+		summarizeBy: none
+		sourceColumn: join_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column position
+		dataType: string
+		lineageTag: 5252568a-074f-4be9-9cb9-626a6dbbc336
+		summarizeBy: none
+		sourceColumn: position
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: 322cd530-6069-49ea-aedd-8d8bd1752096
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column team
+		dataType: string
+		lineageTag: f9ed3fe9-7f78-475c-931e-101d629f3446
+		summarizeBy: none
+		sourceColumn: team
+
+		annotation SummarizationSetBy = Automatic
+
+	column email
+		dataType: string
+		isHidden
+		lineageTag: f5ced89d-1c34-4b47-97b9-030ace3ca219
+		summarizeBy: none
+		sourceColumn: email
+
+		annotation SummarizationSetBy = Automatic
+
+	column phone
+		dataType: string
+		isHidden
+		lineageTag: cbf6b3ed-802e-4ce6-aac5-2e7b12f0ba4f
+		summarizeBy: none
+		sourceColumn: phone
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: 184ab68b-fa08-4ec0-bea9-8085a2aebf28
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column resign_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: cdc8b70f-ecc5-4327-9239-a230dc7bc317
+		summarizeBy: none
+		sourceColumn: resign_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column transfer_note
+		dataType: string
+		lineageTag: 10d19513-cbf5-4c61-8585-278c9a9d3d8e
+		summarizeBy: none
+		sourceColumn: transfer_note
+
+		annotation SummarizationSetBy = Automatic
+
+	column dq_underage_at_join
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 29d99094-3f9b-4084-848f-41574b4622c5
+		summarizeBy: none
+		sourceColumn: dq_underage_at_join
+
+		annotation SummarizationSetBy = Automatic
+
+	column effective_from
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 24f3e4ce-0020-45d8-981a-3d12d043d490
+		summarizeBy: none
+		sourceColumn: effective_from
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column effective_to
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: bd077601-a2c9-4305-9295-e407d8f3bc3c
+		summarizeBy: none
+		sourceColumn: effective_to
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column is_current
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: d7c3dd50-78c6-47a8-95c8-aca389d21d05
+		summarizeBy: none
+		sourceColumn: is_current
+
+		annotation SummarizationSetBy = Automatic
+
+	column change_reason
+		dataType: string
+		lineageTag: 53b3cb06-5534-4a4d-a000-4c486f6b9006
+		summarizeBy: none
+		sourceColumn: change_reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_version
+		dataType: string
+		isHidden
+		lineageTag: a363ed60-6f0d-4a34-95f5-2ede4478d694
+		summarizeBy: none
+		sourceColumn: source_version
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'dwh dim_employees' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "vietdist_dw"),
+				    dwh_dim_employees = Source{[Schema="dwh",Item="dim_employees"]}[Data]
+				in
+				    dwh_dim_employees
+
+	annotation PBI_ResultType = Table
+

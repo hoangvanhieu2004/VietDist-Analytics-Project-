@@ -1,0 +1,72 @@
+relationship AutoDetected_2078c07b-3111-4f6d-93fe-d64444f77984
+	fromColumn: 'Fact Returns'.customer_id
+	toColumn: 'Dim Customer'.customer_id
+
+relationship AutoDetected_6a3bbe8e-0969-4043-98da-9426b7a18f31
+	fromColumn: 'Fact Sales'.customer_id
+	toColumn: 'Dim Customer'.customer_id
+
+relationship AutoDetected_42387ef8-96b9-4a4a-835c-291fef899c17
+	fromColumn: 'Fact Distributor Orders'.date_key
+	toColumn: 'Dim Date'.date_key
+
+relationship AutoDetected_16a3db6b-d612-4bd2-8f15-275c0c59277c
+	fromColumn: 'Fact Returns'.date_key
+	toColumn: 'Dim Date'.date_key
+
+relationship AutoDetected_f8a69054-5e36-45bb-a3e8-de0e616a0271
+	fromColumn: 'Fact Sales'.date_key
+	toColumn: 'Dim Date'.date_key
+
+relationship AutoDetected_c6a90b8a-2ddf-4a82-9438-05bf1a85b21f
+	fromColumn: 'Fact Targets'.date_key
+	toColumn: 'Dim Date'.date_key
+
+relationship AutoDetected_bcd38522-49fd-4b12-8018-c90f07b17336
+	fromColumn: 'Mart Distributor Performance'.date_key
+	toColumn: 'Dim Date'.date_key
+
+relationship AutoDetected_c2d39683-b6e7-4db3-b7eb-9134b8beb2b4
+	fromColumn: 'Mart Sales vs Target'.date_key
+	toColumn: 'Dim Date'.date_key
+
+relationship AutoDetected_5cc58f5f-a326-429f-8011-90680c3a3ab8
+	fromColumn: 'Fact Distributor Orders'.distributor_sk
+	toColumn: 'Dim Distributor'.distributor_sk
+
+relationship AutoDetected_79dfb613-ad73-42c2-af9a-43610f09ab7e
+	fromColumn: 'Mart Distributor Performance'.distributor_sk
+	toColumn: 'Dim Distributor'.distributor_sk
+
+relationship AutoDetected_de0c2632-abad-469a-af28-eac42ce9a450
+	fromColumn: 'Fact Returns'.employee_sk
+	toColumn: 'Dim Employee'.employee_sk
+
+relationship AutoDetected_4691ef8f-bd2b-44e7-8f12-720935152788
+	fromColumn: 'Fact Sales'.employee_sk
+	toColumn: 'Dim Employee'.employee_sk
+
+relationship AutoDetected_bb2d5e43-0be9-425d-b2e6-3f3f72868d45
+	fromColumn: 'Fact Targets'.employee_sk
+	toColumn: 'Dim Employee'.employee_sk
+
+relationship AutoDetected_a8270d4f-64a8-4318-b261-86caa7053e2b
+	fromColumn: 'Mart Sales vs Target'.employee_sk
+	toColumn: 'Dim Employee'.employee_sk
+
+relationship AutoDetected_07a23cb1-be07-4674-ab92-0983b0eb64e5
+	fromColumn: 'Fact Distributor Orders'.product_id
+	toColumn: 'Dim Product'.product_id
+
+relationship AutoDetected_32fd74f9-ce8d-4af9-b84b-f39f1b342459
+	fromColumn: 'Fact Returns'.product_id
+	toColumn: 'Dim Product'.product_id
+
+relationship AutoDetected_82c68ee1-6b5e-42aa-8da6-2d7920538766
+	fromColumn: 'Fact Sales'.product_id
+	toColumn: 'Dim Product'.product_id
+
+relationship 'Bridge Promotion Product_promotion_id_Dim Promotion_promotion_id'
+	fromColumn: 'Bridge Promotion Product'.promotion_id
+	toColumn: 'Dim Promotion'.promotion_id
+

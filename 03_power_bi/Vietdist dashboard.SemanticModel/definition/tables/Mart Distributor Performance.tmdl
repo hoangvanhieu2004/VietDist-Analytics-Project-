@@ -1,0 +1,265 @@
+table 'Mart Distributor Performance'
+	lineageTag: c38c81c4-3813-4f9f-82d8-a162773205cb
+
+	column year
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 1502336c-0b5a-4524-8968-e70f27be6073
+		summarizeBy: none
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column month
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: abe6db71-5aa6-4ff9-a0d2-61d9405999a9
+		summarizeBy: none
+		sourceColumn: month
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 1dcfb523-445d-4e49-8c21-f3ed0e0f56aa
+		summarizeBy: none
+		sourceColumn: date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_start
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: 5c2075fa-30a5-424b-adc5-7efcc9fdbe1c
+		summarizeBy: none
+		sourceColumn: month_start
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column distributor_id
+		dataType: string
+		isHidden
+		lineageTag: aaeee4ef-e25e-4d05-83ce-506da35ab5d6
+		summarizeBy: none
+		sourceColumn: distributor_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column distributor_sk
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 1dd03ea5-47d0-46d5-9e79-cbda3a011c13
+		summarizeBy: none
+		sourceColumn: distributor_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column distributor_name
+		dataType: string
+		isHidden
+		lineageTag: b10f637d-1076-46aa-a955-cf8192fca47a
+		summarizeBy: none
+		sourceColumn: distributor_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column tier
+		dataType: string
+		isHidden
+		lineageTag: 12eafa0e-b433-445f-9c43-d47c592699ac
+		summarizeBy: none
+		sourceColumn: tier
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		isHidden
+		lineageTag: 7ccb3994-658d-4565-acb5-08759db27dda
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column channel
+		dataType: string
+		isHidden
+		lineageTag: 22ab8f92-72e0-4595-b78b-f3427df2d284
+		summarizeBy: none
+		sourceColumn: channel
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		isHidden
+		lineageTag: 2f0c5006-842d-4f7f-a8cb-85ad920a122f
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_orders
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 99a015f9-8c61-41f1-832a-4875b343c3e1
+		summarizeBy: sum
+		sourceColumn: total_orders
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_lines
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: ef0c8838-5fe3-4dba-8527-d54ef485d872
+		summarizeBy: sum
+		sourceColumn: order_lines
+
+		annotation SummarizationSetBy = Automatic
+
+	column qty_ordered
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c8390405-341e-4df9-8f1f-df4b68df688a
+		summarizeBy: sum
+		sourceColumn: qty_ordered
+
+		annotation SummarizationSetBy = Automatic
+
+	column qty_delivered
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 201d326b-f81f-47cb-993d-ada9f6c799b9
+		summarizeBy: sum
+		sourceColumn: qty_delivered
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_order_value
+		dataType: double
+		isHidden
+		lineageTag: 1b40c5f3-c7c5-4123-bdab-af86b87ef08d
+		summarizeBy: sum
+		sourceColumn: total_order_value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column delivered_value
+		dataType: double
+		isHidden
+		lineageTag: d2b4f17a-6ac6-4529-8b6d-2a3d6349770d
+		summarizeBy: sum
+		sourceColumn: delivered_value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cancelled_lines
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: d9201076-6bac-463f-8f0f-574cefc8d679
+		summarizeBy: sum
+		sourceColumn: cancelled_lines
+
+		annotation SummarizationSetBy = Automatic
+
+	column fill_rate
+		dataType: double
+		isHidden
+		lineageTag: ab24ae54-2fc8-4d5e-b299-ddd4a1f340e2
+		summarizeBy: none
+		sourceColumn: fill_rate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ontime_rate
+		dataType: double
+		isHidden
+		lineageTag: 17766368-5b73-44e9-af0c-1b89a75b9b60
+		summarizeBy: none
+		sourceColumn: ontime_rate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column last_order_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 0aa669dd-4038-4b1b-b8aa-0518af4c6bad
+		summarizeBy: none
+		sourceColumn: last_order_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column days_since_last_order
+		dataType: int64
+		formatString: 0
+		lineageTag: 58cb404d-e730-4cb4-a58b-0eea479f86e9
+		summarizeBy: none
+		sourceColumn: days_since_last_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column inactive_alert
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: d05da35a-1897-41dc-9dee-af089eb077f2
+		summarizeBy: none
+		sourceColumn: inactive_alert
+
+		annotation SummarizationSetBy = Automatic
+
+	column ly_total_order_value
+		dataType: double
+		isHidden
+		lineageTag: 2104363d-0448-44e5-9b76-99c63387139b
+		summarizeBy: sum
+		sourceColumn: ly_total_order_value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column yoy_growth_pct
+		dataType: double
+		isHidden
+		lineageTag: 98427256-8fee-418a-aeb4-f74f52a2e5dc
+		summarizeBy: none
+		sourceColumn: yoy_growth_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'dwh mart_distributor_performance' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "vietdist_dw"),
+				    dwh_mart_distributor_performance = Source{[Schema="dwh",Item="mart_distributor_performance"]}[Data]
+				in
+				    dwh_mart_distributor_performance
+
+	annotation PBI_ResultType = Table
+

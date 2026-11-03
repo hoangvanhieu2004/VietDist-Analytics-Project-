@@ -1,0 +1,102 @@
+table 'Dim Promotion'
+	lineageTag: 10a22728-143b-435a-86d7-a5f24f27b939
+
+	column promotion_id
+		dataType: string
+		lineageTag: 09714dce-fa94-4fa7-9fd7-01382eec7af4
+		sourceColumn: promotion_id
+
+	column promotion_name
+		dataType: string
+		lineageTag: 2929bd3b-9b93-4d98-aa32-a0e00e32d0e8
+		sourceColumn: promotion_name
+
+	column promotion_type
+		dataType: string
+		lineageTag: e2cb001c-1532-4664-9f32-3cc44a1aa750
+		sourceColumn: promotion_type
+
+	column target_channel
+		dataType: string
+		lineageTag: d11c4e12-317e-4b76-a7b8-7e8247550048
+		sourceColumn: target_channel
+
+	column target_region
+		dataType: string
+		lineageTag: 7601c803-ab61-4cf2-aad0-babd3899d9f7
+		sourceColumn: target_region
+
+	column start_date
+		dataType: dateTime
+		lineageTag: a776d2c4-78b6-49ef-a223-e80cc52709ef
+		sourceColumn: start_date
+
+	column end_date
+		dataType: dateTime
+		lineageTag: 61567230-20de-46c0-ad37-25fb884f7ab3
+		sourceColumn: end_date
+
+	column duration_days
+		dataType: int64
+		lineageTag: a94098b3-cf77-4ba2-aa7e-2a9a1075c279
+		summarizeBy: none
+		sourceColumn: duration_days
+
+	column discount_pct
+		dataType: double
+		lineageTag: f8eeac40-44dd-45cf-8596-40fd278bafc1
+		summarizeBy: none
+		sourceColumn: discount_pct
+
+	column min_order_quantity
+		dataType: int64
+		lineageTag: 693decce-6be7-428b-8e4e-755bd9c5c0e6
+		summarizeBy: none
+		sourceColumn: min_order_quantity
+
+	column budget_vnd
+		dataType: double
+		formatString: #,0
+		lineageTag: 92c32bd3-dabe-433b-bd01-2e7b3636376e
+		summarizeBy: none
+		sourceColumn: budget_vnd
+
+	column actual_cost_vnd
+		dataType: double
+		formatString: #,0
+		lineageTag: 22560d0a-00b4-410c-862a-9a1d7548aed2
+		summarizeBy: none
+		sourceColumn: actual_cost_vnd
+
+	column status
+		dataType: string
+		lineageTag: 076a6b4c-ce44-4b3e-9347-a8f62a199547
+		sourceColumn: status
+
+	column is_counted_as_promo
+		dataType: boolean
+		lineageTag: c416abbf-171b-4c07-ab99-cff99b5abc10
+		sourceColumn: is_counted_as_promo
+
+	column created_by
+		dataType: string
+		lineageTag: c6163082-3a23-4ed1-b06c-bd17f69bb286
+		sourceColumn: created_by
+
+	column _source_batch_id
+		dataType: string
+		isHidden
+		lineageTag: 9d47eb0d-9219-47c2-953c-495266bba034
+		sourceColumn: _source_batch_id
+
+	partition 'dwh dim_promotions' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "vietdist_dw"),
+				    Result = Value.NativeQuery(Source, "SELECT * FROM dwh.dim_promotions", null, [EnableFolding = true])
+				in
+				    Result
+
+	annotation PBI_ResultType = Table
+

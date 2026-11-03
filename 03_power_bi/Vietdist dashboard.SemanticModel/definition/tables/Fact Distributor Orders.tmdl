@@ -1,0 +1,252 @@
+table 'Fact Distributor Orders'
+	lineageTag: 30661f19-f3e9-484b-90cc-8bf91701b130
+
+	column order_id
+		dataType: string
+		lineageTag: 80f6be58-29d7-4c7d-85c9-cc2b79c923ff
+		summarizeBy: none
+		sourceColumn: order_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_id
+		dataType: string
+		isHidden
+		lineageTag: 37227167-6198-4944-a38c-2c5c9277edde
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 46dfcf66-0af6-437a-90a4-4f0749bb7c58
+		summarizeBy: none
+		sourceColumn: date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_date
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: 109294cd-aeef-493a-9536-f12fc9275cab
+		summarizeBy: none
+		sourceColumn: order_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column distributor_id
+		dataType: string
+		isHidden
+		lineageTag: 3880db20-1ac5-4a10-8115-ac61c4e07057
+		summarizeBy: none
+		sourceColumn: distributor_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column distributor_sk
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c55e7cfa-f071-4885-84cf-b08dacebce6b
+		summarizeBy: none
+		sourceColumn: distributor_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		isHidden
+		lineageTag: 5e26ccbb-c78b-4413-97ff-ab37a2746fc6
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column channel
+		dataType: string
+		isHidden
+		lineageTag: b84a6f88-48c5-4272-8af1-3d948e7c5be1
+		summarizeBy: none
+		sourceColumn: channel
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_category
+		dataType: string
+		isHidden
+		lineageTag: 6c746090-7c93-479e-8356-8c573049578b
+		summarizeBy: none
+		sourceColumn: product_category
+
+		annotation SummarizationSetBy = Automatic
+
+	column qty_ordered
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c23c1cb9-6459-4ff9-9a4c-cb08bb893d8e
+		summarizeBy: sum
+		sourceColumn: qty_ordered
+
+		annotation SummarizationSetBy = Automatic
+
+	column qty_delivered
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 44eb9992-f722-48af-9659-ede474e76334
+		summarizeBy: sum
+		sourceColumn: qty_delivered
+
+		annotation SummarizationSetBy = Automatic
+
+	column qty_delivered_effective
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: e73f9320-6535-45ae-9ded-a7ea9157b107
+		summarizeBy: sum
+		sourceColumn: qty_delivered_effective
+
+		annotation SummarizationSetBy = Automatic
+
+	column fill_rate_pct
+		dataType: double
+		isHidden
+		lineageTag: 28a771ff-6516-4e62-b442-e9e02d545036
+		summarizeBy: none
+		sourceColumn: fill_rate_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column unit_price_list
+		dataType: double
+		isHidden
+		lineageTag: 2848beaa-3f89-46ce-bcc5-49e09e0d67b8
+		summarizeBy: none
+		sourceColumn: unit_price_list
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column distributor_price
+		dataType: double
+		isHidden
+		lineageTag: 88516491-a49b-4309-bb27-49baae3ade43
+		summarizeBy: none
+		sourceColumn: distributor_price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column gross_amount
+		dataType: double
+		isHidden
+		lineageTag: 7ab10031-4d16-4da3-a78f-e70232a0e702
+		summarizeBy: sum
+		sourceColumn: gross_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column delivered_amount
+		dataType: double
+		isHidden
+		lineageTag: 4744bbec-2148-4576-b78f-92557caa0733
+		summarizeBy: sum
+		sourceColumn: delivered_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column delivered_amount_effective
+		dataType: double
+		isHidden
+		lineageTag: f8438674-25a7-420e-b41a-2885873608f3
+		summarizeBy: sum
+		sourceColumn: delivered_amount_effective
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column expected_delivery_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: eecbaaad-e3ad-4721-987c-0ace808d5304
+		summarizeBy: none
+		sourceColumn: expected_delivery_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column actual_delivery_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 2905d17a-5d82-4c8e-a111-aa865b993091
+		summarizeBy: none
+		sourceColumn: actual_delivery_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column is_ontime
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 9e76991d-e76c-4830-adce-11247479f470
+		summarizeBy: none
+		sourceColumn: is_ontime
+
+		annotation SummarizationSetBy = Automatic
+
+	column ontime_delivery
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: d92adc69-2585-4ea9-9ed0-25c59b343c74
+		summarizeBy: none
+		sourceColumn: ontime_delivery
+
+		annotation SummarizationSetBy = Automatic
+
+	column delivery_status
+		dataType: string
+		lineageTag: 42a66c08-2bd7-4809-aeeb-55a2b8694e16
+		summarizeBy: none
+		sourceColumn: delivery_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column payment_terms
+		dataType: string
+		lineageTag: 5d29dc83-813b-4b93-a12f-260a37770dc0
+		summarizeBy: none
+		sourceColumn: payment_terms
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'dwh fact_distributor_orders' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "vietdist_dw"),
+				    dwh_fact_distributor_orders = Source{[Schema="dwh",Item="fact_distributor_orders"]}[Data]
+				in
+				    dwh_fact_distributor_orders
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,255 @@
+/// Mart dùng để đối soát. Số thực tế lặp trên mỗi version (A-37); visual dùng measure từ Fact Sales/Fact Returns/Fact Targets.
+table 'Mart Sales vs Target'
+	isHidden
+	lineageTag: 81a81863-0514-4c3f-9640-5a544863fec1
+
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: b1842543-956f-4ac4-8bc7-47396a7e5990
+		summarizeBy: sum
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column month
+		dataType: int64
+		formatString: 0
+		lineageTag: cec34f36-74b5-4685-84b8-365fa487e97b
+		summarizeBy: sum
+		sourceColumn: month
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 27b04115-8541-454b-adba-dbf5dcd0bf74
+		summarizeBy: none
+		sourceColumn: date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_start
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 3dab6e23-abe1-4259-be9a-b94defaf2299
+		summarizeBy: none
+		sourceColumn: month_start
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column employee_id
+		dataType: string
+		lineageTag: 6c44dd0b-013e-4b5a-8489-447ffe5f1586
+		summarizeBy: none
+		sourceColumn: employee_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column employee_sk
+		dataType: int64
+		formatString: 0
+		lineageTag: 2fc6b129-0307-4c5e-bc9f-ca1cce973566
+		summarizeBy: none
+		sourceColumn: employee_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column employee_name
+		dataType: string
+		lineageTag: d09fd208-c126-4106-ba22-776b5cb37aec
+		summarizeBy: none
+		sourceColumn: employee_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: bc442572-d902-4b16-9e3e-89cbed0ec724
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column team
+		dataType: string
+		lineageTag: e9117c98-6fde-4bbf-90dd-ad5d366cfa25
+		summarizeBy: none
+		sourceColumn: team
+
+		annotation SummarizationSetBy = Automatic
+
+	column version_code
+		dataType: string
+		lineageTag: 0f9013c6-9e43-4091-a359-86f93aa11c13
+		summarizeBy: none
+		sourceColumn: version_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column version_number
+		dataType: int64
+		formatString: 0
+		lineageTag: de2af359-a0f5-4fb4-839b-0b551f413f0b
+		summarizeBy: sum
+		sourceColumn: version_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_latest
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 5d75ef27-0734-44de-bbc9-052cf3d2bc2b
+		summarizeBy: none
+		sourceColumn: is_latest
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_original
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: fbdff429-d318-4ced-9d4e-a74d05d3d6be
+		summarizeBy: none
+		sourceColumn: is_original
+
+		annotation SummarizationSetBy = Automatic
+
+	column target_revenue
+		dataType: double
+		lineageTag: 87daa780-9acb-429e-baa6-e54691d97137
+		summarizeBy: sum
+		sourceColumn: target_revenue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column target_quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: d4e5e725-9f77-4f98-9160-5caa49436a9a
+		summarizeBy: sum
+		sourceColumn: target_quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column target_new_customers
+		dataType: int64
+		formatString: 0
+		lineageTag: c210140d-3831-489c-8cbe-a131aefab5aa
+		summarizeBy: sum
+		sourceColumn: target_new_customers
+
+		annotation SummarizationSetBy = Automatic
+
+	column actual_net_revenue
+		dataType: double
+		lineageTag: 346aedb9-df5d-4212-a597-30100445303b
+		summarizeBy: sum
+		sourceColumn: actual_net_revenue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column delivered_net
+		dataType: double
+		lineageTag: 65a32d0e-710f-486e-ab2d-11cb6ea0f665
+		summarizeBy: sum
+		sourceColumn: delivered_net
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column returns_amount
+		dataType: double
+		lineageTag: ca30426b-f66a-43f6-b3b2-243b2814a1f1
+		summarizeBy: sum
+		sourceColumn: returns_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column actual_gross
+		dataType: double
+		lineageTag: 8a14ef9c-e773-488b-9e60-a18981d6f7f3
+		summarizeBy: sum
+		sourceColumn: actual_gross
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column actual_quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: 8ca6d6fb-3354-45ec-8476-00e0fd14e029
+		summarizeBy: sum
+		sourceColumn: actual_quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column active_customers
+		dataType: int64
+		formatString: 0
+		lineageTag: 10206ffe-1665-457f-88f0-5d2fd586f976
+		summarizeBy: sum
+		sourceColumn: active_customers
+
+		annotation SummarizationSetBy = Automatic
+
+	column new_customers
+		dataType: int64
+		formatString: 0
+		lineageTag: 2bc9b293-b9d3-4b3d-b44f-04639a798548
+		summarizeBy: sum
+		sourceColumn: new_customers
+
+		annotation SummarizationSetBy = Automatic
+
+	column achieve_pct
+		dataType: double
+		lineageTag: 09a07333-b0e6-4a71-8d5a-263d79777465
+		summarizeBy: sum
+		sourceColumn: achieve_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ly_net_revenue
+		dataType: double
+		lineageTag: 3ddbedaa-15ac-4824-87a3-33bf63ba9038
+		summarizeBy: sum
+		sourceColumn: ly_net_revenue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column yoy_growth_pct
+		dataType: double
+		lineageTag: 03214c17-583b-489d-a791-c97a649773b6
+		summarizeBy: sum
+		sourceColumn: yoy_growth_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'dwh mart_sales_vs_target' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "vietdist_dw"),
+				    dwh_mart_sales_vs_target = Source{[Schema="dwh",Item="mart_sales_vs_target"]}[Data]
+				in
+				    dwh_mart_sales_vs_target
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,25 @@
+table 'Bridge Promotion Product'
+	isHidden
+	lineageTag: ffc0a10f-2b87-4d04-8450-e180ed76a565
+
+	column promotion_id
+		dataType: string
+		lineageTag: f93e5be7-d20c-47e2-a770-2fc5cd2c39d9
+		sourceColumn: promotion_id
+
+	column product_id
+		dataType: string
+		lineageTag: abfb3976-45c8-4f7c-b4e2-f90bd0bf43ea
+		sourceColumn: product_id
+
+	partition 'dwh bridge_promotion_products' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "vietdist_dw"),
+				    Result = Value.NativeQuery(Source, "SELECT * FROM dwh.bridge_promotion_products", null, [EnableFolding = true])
+				in
+				    Result
+
+	annotation PBI_ResultType = Table
+

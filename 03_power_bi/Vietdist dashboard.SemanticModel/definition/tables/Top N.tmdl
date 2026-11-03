@@ -1,0 +1,14 @@
+/// Tham số Top N cho khách hàng / sản phẩm (BR-A-03)
+table 'Top N'
+	lineageTag: 2150412f-90d0-47fd-b6bf-7f3e92da86c3
+
+	column 'Top N'
+		lineageTag: cc3fb89d-2894-40f1-8444-ab8f32d28a01
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Top N]
+
+	partition 'Top N' = calculated
+		mode: import
+		source = SELECTCOLUMNS(GENERATESERIES(5, 50, 5), "Top N", [Value])
+

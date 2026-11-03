@@ -11,9 +11,10 @@ WHERE NOT EXISTS (SELECT 1 FROM pg_database WHERE datname = 'vietdist_dw')
 
 CREATE SCHEMA IF NOT EXISTS raw;      -- Bronze layer
 CREATE SCHEMA IF NOT EXISTS staging;  -- Silver layer
-CREATE SCHEMA IF NOT EXISTS dwh;      -- Gold layer
+CREATE SCHEMA IF NOT EXISTS dwh;      -- Gold layer (view)
+CREATE SCHEMA IF NOT EXISTS snapshots;  -- lịch sử SCD2 không có trong nguồn (vd nhà phân phối)
 
--- Kiểm tra: kết quả mong đợi 3 dòng
+-- Kiểm tra: kết quả mong đợi 4 dòng
 SELECT schema_name FROM information_schema.schemata
-WHERE schema_name IN ('raw', 'staging', 'dwh')
+WHERE schema_name IN ('raw', 'staging', 'dwh', 'snapshots')
 ORDER BY schema_name;
