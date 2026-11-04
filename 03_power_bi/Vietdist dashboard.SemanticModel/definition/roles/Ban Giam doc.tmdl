@@ -1,6 +1,0 @@
-/// Toàn bộ dữ liệu, không giới hạn (BRD 5.2)
-role 'Ban Giam doc'
-	modelPermission: read
-
-	annotation PBI_Id = 35983122c75848e2b759f5d027ac4e85
-

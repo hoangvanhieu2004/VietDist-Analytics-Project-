@@ -30,3 +30,7 @@ docs/dashboard_metrics.md
 03_power_bi/dashboard_spec.md
 
 *.json
+
+# Power BI project: model (TMDL) và report (PBIR) — chỉ giữ trên máy
+03_power_bi/Vietdist dashboard.SemanticModel/
+03_power_bi/Vietdist dashboard.Report/

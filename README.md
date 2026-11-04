@@ -93,7 +93,7 @@ flowchart LR
 - **Mô phỏng các tình huống chưa có trong dữ liệu** (phiên bản v3, nhà phân phối đổi cấp, file dạng wide) trong transaction rồi rollback, để chứng minh logic mà không làm bẩn DB.
 
 **Power BI**
-- **Report sinh bằng code** (`build_report.py`): 7 trang 1920 × 1080, 137 visual, layout thống nhất, xem được thay đổi qua git diff.
+- **Report sinh bằng code Python** (định dạng PBIR): 7 trang 1920 × 1080, 137 visual, layout thống nhất trên mọi trang.
 - 103 measure DAX được đối soát với SQL; 5 vai trò **Row-Level Security** theo cấp bậc tổ chức; drillthrough sang trang nhân viên và trang nhà phân phối.
 
 ---
@@ -102,32 +102,45 @@ flowchart LR
 
 ```
 VietDist/
-├── 00_setup/                  # requirements.txt, .env.example, init_db.sql, check_env.py
-├── 01_ingestion/              # Bronze
-│   ├── connectors/            #   gdrive_connector.py: list + tải file từ Google Drive
-│   ├── utils/                 #   file_parser.py (CSV/XLSX/XLSM/XLSB), db_utils.py (COPY, log)
-│   ├── loaders/               #   base_loader.py + 10 loader (mỗi nguồn 1 file)
-│   ├── sql/                   #   DDL bảng hệ thống (ingest_log, sales_target_files)
-│   ├── tests/                 #   script kiểm tra checkpoint Task 1.1 / 1.3 / 1.4
-│   └── run_bronze.py          #   chạy cả 10 nguồn
-├── 02_sql_analytics/          # Silver + Gold
-│   ├── profiling/             #   profile_raw.py, profiling_checks.sql
-│   ├── staging/               #   00_helpers.sql + 14 model stg_*.sql
-│   ├── snapshots/             #   SCD2 merge cho nhà phân phối
-│   ├── dwh/                   #   view dim_*, fact_*, mart_*
-│   ├── tests/                 #   dq.py, test_staging.py, test_dwh.py, test_target_versioning.py
+├── 00_setup/
+│   ├── requirements.txt           # thư viện Python
+│   ├── .env.example               # mẫu biến môi trường (DB, Google Drive)
+│   ├── init_db.sql                # tạo DB vietdist_dw + các schema
+│   └── check_env.py               # kiểm tra môi trường (Phase 0)
+├── 01_ingestion/                  # Bronze
+│   ├── connectors/
+│   │   └── gdrive_connector.py    #   liệt kê + tải file từ Google Drive
+│   ├── utils/
+│   │   ├── file_parser.py         #   đọc CSV / XLSX / XLSM / XLSB
+│   │   └── db_utils.py            #   nạp bằng COPY, ghi ingest_log
+│   ├── loaders/
+│   │   ├── base_loader.py         #   logic dùng chung cho mọi loader
+│   │   ├── load_sales_targets.py  #   chỉ tiêu nhiều phiên bản
+│   │   └── load_*.py              #   9 loader còn lại (mỗi nguồn 1 file)
+│   ├── sql/                       #   DDL bảng hệ thống (ingest_log, sales_target_files)
+│   ├── tests/                     #   check_task_1_1 / 1_3 / 1_4.py
+│   └── run_bronze.py              #   chạy cả 10 nguồn
+├── 02_sql_analytics/              # Silver + Gold
+│   ├── profiling/                 #   profile_raw.py, profiling_checks.sql
+│   ├── staging/                   #   00_helpers.sql + 13 model stg_*.sql
+│   ├── snapshots/                 #   01_distributors.sql: SCD2 merge cho nhà phân phối
+│   ├── dwh/                       #   00_helpers.sql + 13 view dim_* / fact_* / mart_* / bridge_*
+│   ├── tests/                     #   dq.py, test_staging.py, test_dwh.py, test_target_versioning.py
 │   ├── model_runner.py
-│   ├── run_staging.py         #   build Silver rồi tự tạo lại Gold
+│   ├── run_staging.py             #   build Silver rồi tự tạo lại Gold
 │   └── run_dwh.py
 ├── 03_power_bi/
-│   ├── Vietdist dashboard.pbip             # mở bằng Power BI Desktop
-│   ├── Vietdist dashboard.SemanticModel/   # model dạng TMDL: bảng, quan hệ, measure, RLS
-│   ├── Vietdist dashboard.Report/          # report dạng PBIR (sinh bởi build_report.py)
-│   ├── build_report.py
-│   ├── dashboard_spec.md
-│   └── vietdist_theme.json
-└── docs/                      # profiling, data issues, giả định, từ điển chỉ số, giải thích code
+│   ├── Vietdist dashboard.pbip    # file project Power BI
+│   └── Vietdist dashboard.pdf     # bản xuất PDF của dashboard
+├── docs/
+│   ├── data_profile.md            # profiling tự động từng cột
+│   ├── data_issues.md             # vấn đề dữ liệu và cách xử lý
+│   └── assumptions_log.md         # các giả định thiết kế
+├── images/                        # ảnh chụp dashboard và data model
+└── README.md
 ```
+
+> Semantic model, các trang report và script sinh report của Power BI chỉ được giữ trên máy, không đưa lên repo. Xem dashboard qua [bản PDF](03_power_bi/Vietdist%20dashboard.pdf) hoặc [ảnh chụp](#ảnh-chụp-các-trang-dữ-liệu-mẫu-năm-2024).
 
 ---
 
@@ -168,9 +181,8 @@ python 02_sql_analytics/tests/test_dwh.py
 ```
 
 ### 4. Power BI
-1. Mở `03_power_bi/Vietdist dashboard.pbip` bằng Power BI Desktop.
-2. **Refresh**, nhập user và mật khẩu PostgreSQL khi được hỏi. Mật khẩu không được lưu trong repo.
-3. Chỉ sinh lại các trang báo cáo khi Desktop **đã đóng**: `python 03_power_bi/build_report.py`.
+Semantic model và các trang report không có trong repo. Có thể xem dashboard qua [bản PDF](03_power_bi/Vietdist%20dashboard.pdf) hoặc [ảnh chụp các trang](#ảnh-chụp-các-trang-dữ-liệu-mẫu-năm-2024).
+Model đọc trực tiếp các view trong schema `dwh` ở chế độ Import, nên chỉ cần chạy xong bước 2 là có đủ dữ liệu cho dashboard.
 
 ---
 
@@ -248,8 +260,6 @@ Star schema: các fact (`Fact Sales`, `Fact Returns`, `Fact Targets`, `Fact Dist
 | [`docs/data_issues.md`](docs/data_issues.md) | Vấn đề dữ liệu từng bảng và cách xử lý ở Silver |
 | [`docs/data_profile.md`](docs/data_profile.md) | Profiling tự động từng cột (file tự sinh) |
 | [`docs/assumptions_log.md`](docs/assumptions_log.md) | Toàn bộ giả định thiết kế (A-01…) và trạng thái xác nhận |
-| [`docs/dashboard_metrics.md`](docs/dashboard_metrics.md) | Từ điển chỉ số: định nghĩa, công thức của từng measure |
-| [`03_power_bi/dashboard_spec.md`](03_power_bi/dashboard_spec.md) | Đặc tả dashboard, model, RLS, kết quả đối soát |
 
 ---
 
